@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Movie from "../../components/movie";
 
 //server component
 export const metadata = {
@@ -34,14 +35,11 @@ export default async function HomePage() {
 
         return (
           <div key={movie.id}>
-            <Link href={`/movies/${movie.id}`}>
-              <img
-                src={imgURL}
-                alt={movie.title}
-                style={{ width: "100px" }}
-              />
-              <h3>{movie.title}</h3>
-            </Link>
+            <Movie
+              id={movie.id}
+              title={movie.title}
+              poster_path={imgURL}
+            />
           </div>
         );
       })}
