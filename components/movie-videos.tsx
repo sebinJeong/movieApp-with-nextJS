@@ -1,13 +1,11 @@
 import { error } from "node:console";
-import { API_URL } from "../app/(home)/page";
+import { BASE_API_URL, options } from "../app/(home)/page";
 
 async function getVideos(id: string) {
-    await new Promise((resolve)=> (setTimeout(resolve, 3000)));
-    throw new Error("something broke...");
-    //   const response = await fetch(`${API_URL}/${id}/videos`, {
-//     cache: "force-cache",
-//   });
-//   return response.json();
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  const response = await fetch(`${BASE_API_URL}/${id}/videos`,options);
+  return response.json();
 }
 
 export default async function MovieVideos({ id }: { id: string }) {
