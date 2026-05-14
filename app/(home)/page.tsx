@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Movie from "../../components/movie";
+import styles from "../../styles/home.module.css"
 
 //server component
 export const metadata = {
@@ -14,7 +15,7 @@ export const options = {
   headers: {
     accept: "application/json",
     Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
-  },
+  }, 
 };
 
 async function getMovies() {
@@ -28,13 +29,13 @@ export default async function HomePage() {
   const movies = await getMovies();
 
   return (
-    <div>
+    <div className={styles.container}>
       {movies.map((movie) => {
         const imgURL =
           "https://image.tmdb.org/t/p/w500" + movie["poster_path"];
 
         return (
-          <div key={movie.id}>
+          <div key={movie.id} >
             <Movie
               id={movie.id}
               title={movie.title}
